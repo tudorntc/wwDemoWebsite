@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo site for WW</title>
+    <style>
+        body {
+            margin: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+            padding: 0;
+            height: 200vh;
+        }
+
+        #greet {
+            position: absolute;
+            left: env(safe-area-inset-left, 0);
+            top: env(safe-area-inset-top, 0);
+        }
+
+        p{
+            margin: 0;
+        }
+
+        #helloWorld{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); /* Moves the element back by 50% of its width and height */
+        }
+
+    </style>
+</head>
+<body>
+    <p id="greet">Hello, Tudor!</p>
+    <p id="helloWorld">Hello, world!</p>
+</body>
+</html>
