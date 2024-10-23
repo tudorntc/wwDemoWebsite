@@ -6,7 +6,10 @@
     <title>Demo site for WW</title>
     <style>
         body {
-            margin: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+            padding-top: env(safe-area-inset-top, 20px);  /* fallback */
+            padding-bottom: env(safe-area-inset-bottom, 20px);  /* fallback */
+            padding-left: env(safe-area-inset-left, 0);   /* fallback */
+            padding-right: env(safe-area-inset-right, 0); /* fallback */
             padding: 0;
             height: 200vh;
         }
