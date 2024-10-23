@@ -6,35 +6,51 @@
     <title>Demo site for WW</title>
     <style>
         body {
-            padding-top: env(safe-area-inset-top, 200px);  /* fallback */
-            padding-bottom: env(safe-area-inset-bottom, 200px);  /* fallback */
-            padding-left: env(safe-area-inset-left, 200px);   /* fallback */
-            padding-right: env(safe-area-inset-right, 200px); /* fallback */
-            padding: 0;
-            height: 200vh;
+            padding: 0;  /* Start with no padding */
+            height: 200vh;  /* Make the body taller for testing */
         }
 
         #greet {
             position: absolute;
-            left: env(safe-area-inset-left, 0);
-            top: env(safe-area-inset-top, 0);
+            left: 0;
+            top: 0;
         }
 
-        p{
+        p {
             margin: 0;
         }
 
-        #helloWorld{
+        #helloWorld {
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%); /* Moves the element back by 50% of its width and height */
+            transform: translate(-50%, -50%);
         }
-
     </style>
 </head>
 <body>
     <p id="greet">Hello, Tudor!</p>
     <p id="helloWorld">Hello, world!</p>
+
+    <script>
+        // Function to apply safe-area-insets using JavaScript
+        function applySafeAreaInsets() {
+            const topInset = window.safeAreaInsets?.top || 20;   // fallback to 20px
+            const bottomInset = window.safeAreaInsets?.bottom || 20;
+            const leftInset = window.safeAreaInsets?.left || 20;
+            const rightInset = window.safeAreaInsets?.right || 20;
+
+            document.body.style.paddingTop = `${topInset}px`;
+            document.body.style.paddingBottom = `${bottomInset}px`;
+            document.body.style.paddingLeft = `${leftInset}px`;
+            document.body.style.paddingRight = `${rightInset}px`;
+        }
+
+        // Apply safe area insets once the page loads
+        window.onload = applySafeAreaInsets;
+
+        // Optional: Reapply safe area insets when window resizes
+        window.onresize = applySafeAreaInsets;
+    </script>
 </body>
 </html>
