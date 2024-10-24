@@ -39,10 +39,10 @@
         function checkSafeAreaEnv() {
             const bodyStyle = window.getComputedStyle(document.body);
             
-            const safeAreaTop = bodyStyle.getPropertyValue('padding-top');
-            const safeAreaBottom = bodyStyle.getPropertyValue('padding-bottom');
-            const safeAreaLeft = bodyStyle.getPropertyValue('padding-left');
-            const safeAreaRight = bodyStyle.getPropertyValue('padding-right');
+            const safeAreaTop = bodyStyle.getPropertyValue('env(safe-area-inset-top)');
+            const safeAreaBottom = bodyStyle.getPropertyValue('env(safe-area-inset-bottom)');
+            const safeAreaLeft = bodyStyle.getPropertyValue('env(safe-area-inset-left)');
+            const safeAreaRight = bodyStyle.getPropertyValue('env(safe-area-inset-right)');
             
             const envVariables = {
                 'safe-area-inset-top': safeAreaTop,
