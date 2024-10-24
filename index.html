@@ -35,5 +35,31 @@
 <body>
     <p id="greet">Hello, Tudor!</p>
     <p id="helloWorld">Hello, world!</p>
+    <script>
+        function checkSafeAreaEnv() {
+            const bodyStyle = window.getComputedStyle(document.body);
+            
+            const safeAreaTop = bodyStyle.getPropertyValue('padding-top');
+            const safeAreaBottom = bodyStyle.getPropertyValue('padding-bottom');
+            const safeAreaLeft = bodyStyle.getPropertyValue('padding-left');
+            const safeAreaRight = bodyStyle.getPropertyValue('padding-right');
+            
+            const envVariables = {
+                'safe-area-inset-top': safeAreaTop,
+                'safe-area-inset-bottom': safeAreaBottom,
+                'safe-area-inset-left': safeAreaLeft,
+                'safe-area-inset-right': safeAreaRight
+            };
+
+            Object.entries(envVariables).forEach(([key, value]) => {
+                console.log(`Env ${key}: ${value}`);
+                if (!value.includes('env')) {
+                    document.getElementById('helloWorld').insertAdjacentHTML('afterend', `<p>Env ${key}: ${value}</p>`);
+                }
+            });
+        }
+
+        checkSafeAreaEnv();
+    </script>
 </body>
 </html>
