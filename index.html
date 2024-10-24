@@ -8,10 +8,10 @@
         body {
             padding: 0;
             height: 200vh;
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-            padding-left: env(safe-area-inset-left);
-            padding-right: env(safe-area-inset-right);
+            padding-top: env(safe-area-inset-top, 50px);
+            padding-bottom: env(safe-area-inset-bottom, 50px);
+            padding-left: env(safe-area-inset-left, 50px);
+            padding-right: env(safe-area-inset-right, 50px);
         }
 
         #greet {
@@ -35,18 +35,5 @@
 <body>
     <p id="greet">Hello, Tudor!</p>
     <p id="helloWorld">Hello, world!</p>
-
-    <script>
-        // Function to send safe area insets to the Android app
-        function notifySafeAreaInsets(insets) {
-            if (typeof AndroidInterface !== 'undefined') {
-                AndroidInterface.sendSafeAreaInsets(insets);
-            }
-        }
-
-        // Example call to notify the Android app
-        // You would typically call this when your layout is ready
-        notifySafeAreaInsets('top: 20px; bottom: 10px; left: 100px; right: 0px;');
-    </script>
 </body>
 </html>
