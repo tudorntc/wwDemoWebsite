@@ -6,8 +6,8 @@
     <title>Demo site for WW</title>
     <style>
         body {
-            padding: 0;  
-            height: 200vh;  
+            padding: 0;
+            height: 200vh;
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
             padding-left: env(safe-area-inset-left);
@@ -54,6 +54,11 @@
             Object.entries(envVariables).forEach(([key, value]) => {
                 console.log(`Env ${key}: ${value}`);
             });
+
+            // Send the safe area insets to the Android app
+            if (typeof AndroidInterface !== 'undefined') {
+                AndroidInterface.sendSafeAreaInsets(JSON.stringify(envVariables));
+            }
         }
 
         checkSafeAreaEnv();
