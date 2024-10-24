@@ -8,6 +8,10 @@
         body {
             padding: 0;  /* Start with no padding */
             height: 200vh;  /* Make the body taller for testing */
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
         }
 
         #greet {
@@ -31,26 +35,5 @@
 <body>
     <p id="greet">Hello, Tudor!</p>
     <p id="helloWorld">Hello, world!</p>
-
-    <script>
-        // Function to apply safe-area-insets using JavaScript
-        function applySafeAreaInsets() {
-            const topInset = window.safeAreaInsets?.top || 20;   // fallback to 20px
-            const bottomInset = window.safeAreaInsets?.bottom || 20;
-            const leftInset = window.safeAreaInsets?.left || 20;
-            const rightInset = window.safeAreaInsets?.right || 20;
-
-            document.body.style.paddingTop = `${topInset}px`;
-            document.body.style.paddingBottom = `${bottomInset}px`;
-            document.body.style.paddingLeft = `${leftInset}px`;
-            document.body.style.paddingRight = `${rightInset}px`;
-        }
-
-        // Apply safe area insets once the page loads
-        window.onload = applySafeAreaInsets;
-
-        // Optional: Reapply safe area insets when window resizes
-        window.onresize = applySafeAreaInsets;
-    </script>
 </body>
 </html>
