@@ -35,33 +35,18 @@
 <body>
     <p id="greet">Hello, Tudor!</p>
     <p id="helloWorld">Hello, world!</p>
+
     <script>
-        function checkSafeAreaEnv() {
-            const bodyStyle = window.getComputedStyle(document.body);
-
-            const safeAreaTop = bodyStyle.getPropertyValue('env(safe-area-inset-top)');
-            const safeAreaBottom = bodyStyle.getPropertyValue('env(safe-area-inset-bottom)');
-            const safeAreaLeft = bodyStyle.getPropertyValue('env(safe-area-inset-left)');
-            const safeAreaRight = bodyStyle.getPropertyValue('env(safe-area-inset-right)');
-
-            const envVariables = {
-                'safe-area-inset-top': safeAreaTop,
-                'safe-area-inset-bottom': safeAreaBottom,
-                'safe-area-inset-left': safeAreaLeft,
-                'safe-area-inset-right': safeAreaRight
-            };
-
-            Object.entries(envVariables).forEach(([key, value]) => {
-                console.log(`Env ${key}: ${value}`);
-            });
-
-            // Send the safe area insets to the Android app
+        // Function to send safe area insets to the Android app
+        function notifySafeAreaInsets(insets) {
             if (typeof AndroidInterface !== 'undefined') {
-                AndroidInterface.sendSafeAreaInsets(JSON.stringify(envVariables));
+                AndroidInterface.sendSafeAreaInsets(insets);
             }
         }
 
-        checkSafeAreaEnv();
+        // Example call to notify the Android app
+        // You would typically call this when your layout is ready
+        notifySafeAreaInsets('top: 20px; bottom: 10px; left: 0px; right: 0px;');
     </script>
 </body>
 </html>
