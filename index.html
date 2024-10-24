@@ -6,8 +6,8 @@
     <title>Demo site for WW</title>
     <style>
         body {
-            padding: 0;  /* Start with no padding */
-            height: 200vh;  /* Make the body taller for testing */
+            padding: 0;  
+            height: 200vh;  
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
             padding-left: env(safe-area-inset-left);
@@ -38,12 +38,12 @@
     <script>
         function checkSafeAreaEnv() {
             const bodyStyle = window.getComputedStyle(document.body);
-            
+
             const safeAreaTop = bodyStyle.getPropertyValue('env(safe-area-inset-top)');
             const safeAreaBottom = bodyStyle.getPropertyValue('env(safe-area-inset-bottom)');
             const safeAreaLeft = bodyStyle.getPropertyValue('env(safe-area-inset-left)');
             const safeAreaRight = bodyStyle.getPropertyValue('env(safe-area-inset-right)');
-            
+
             const envVariables = {
                 'safe-area-inset-top': safeAreaTop,
                 'safe-area-inset-bottom': safeAreaBottom,
@@ -53,9 +53,6 @@
 
             Object.entries(envVariables).forEach(([key, value]) => {
                 console.log(`Env ${key}: ${value}`);
-                if (!value.includes('env')) {
-                    document.getElementById('helloWorld').insertAdjacentHTML('afterend', `<br /><br /><br /><br /><br /><br /><p>Env ${key}: ${value}</p>`);
-                }
             });
         }
 
