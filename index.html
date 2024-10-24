@@ -16,8 +16,8 @@
 
         #greet {
             position: absolute;
-            left: 0;
-            top: 0;
+            left: env(safe-area-inset-left);
+            top: env(safe-area-inset-top);
         }
 
         p {
@@ -54,7 +54,7 @@
             Object.entries(envVariables).forEach(([key, value]) => {
                 console.log(`Env ${key}: ${value}`);
                 if (!value.includes('env')) {
-                    document.getElementById('helloWorld').insertAdjacentHTML('afterend', `<p>Env ${key}: ${value}</p>`);
+                    document.getElementById('helloWorld').insertAdjacentHTML('afterend', `<br /><br /><br /><br /><br /><br /><p>Env ${key}: ${value}</p>`);
                 }
             });
         }
