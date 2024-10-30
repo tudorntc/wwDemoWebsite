@@ -40,12 +40,12 @@
             return color;
         }
 
-        document.getElementById("vibrate-button").addEventListener("click", function() {
-            // Call the Android vibrate function
-            AndroidInterface.vibratePhone();
-            
-            // Change the background color to a random color
+        function changeBackgroundColor() {
             document.body.style.backgroundColor = getRandomColor();
+        }
+
+        document.getElementById("vibrate-button").addEventListener("click", function() {
+            AndroidInterface.vibratePhone();  // Call Kotlin function
         });
     </script>
 </body>
