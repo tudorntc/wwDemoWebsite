@@ -15,25 +15,38 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.5s ease;
         }
 
-        #vibrate-button{
+        #vibrate-button {
             padding: 12px 48px;
             border-radius: 100px;
-            border: 1px solid rgb(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.5);
             background-color: rgb(5, 209, 255);
             font-size: 20px;
         }
-
     </style>
 </head>
 <body>
     <button id="vibrate-button">Vibrate</button>
 
     <script>
+        function getRandomColor() {
+            const letters = "0123456789ABCDEF";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
         document.getElementById("vibrate-button").addEventListener("click", function() {
-            AndroidInterface.vibratePhone();  // Call Kotlin function
+            // Call the Android vibrate function
+            AndroidInterface.vibratePhone();
+            
+            // Change the background color to a random color
+            document.body.style.backgroundColor = getRandomColor();
         });
-    </script>    
+    </script>
 </body>
 </html>
