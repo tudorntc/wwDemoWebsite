@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo site for WW</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+
         body {
-            padding-top: env(safe-area-inset-top);
-            padding-left: env(safe-area-inset-left);
-            padding-right: env(safe-area-inset-right);
-            padding-bottom: env(safe-area-inset-bottom);
             margin: 0;
             height: 100vh;
             display: flex;
@@ -17,59 +15,29 @@
             justify-content: center;
         }
 
-        #vibrate-button {
-            padding: 12px 48px;
+        #notification-button{
+            padding: 12px 36px;
             border-radius: 100px;
-            border: 1px solid rgba(0, 0, 0, 0.5);
-            background-color: rgb(5, 209, 255);
-            font-size: 20px;
+            border: none;
+            font-size: 16px;
+            background-color: #9a5ef9;
+            color: white;
+            transition: all 0.3s;
+            font-family: 'Oxanium';
         }
-        
-        p{
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin: 0;
+
+        #notification-button:hover{
+            background-color: #7748c1;
         }
     </style>
 </head>
 <body>
-    <p>Test 1<br>Test 2<br>Test 3<br>Test 4<br>Test 5<br>Test 6<br>Test 7<br>Test 8<br>Test 9<br>Test 10</p>
-
-    <button id="vibrate-button">Vibrate</button>
-
+    <button id="notification-button" onclick="sendNotification()">Send notification</button>
     <script>
-        function getRandomColor() {
-            const letters = "0123456789ABCDEF";
-            let color = "#";
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
+        function sendNotification() {
+            // Call the Android interface method
+            Android.showNotification();
         }
-
-        function changeBackgroundColor() {
-            document.body.style.backgroundColor = getRandomColor();
-        }
-
-        document.getElementById("vibrate-button").addEventListener("click", function() {
-            AndroidInterface.vibratePhone();  // Call Kotlin function
-        });
-
-        window.onload = function() {
-        const safeAreaInsets = {
-            top: parseInt(window.getComputedStyle(document.body).paddingTop),
-            bottom: parseInt(window.getComputedStyle(document.body).paddingBottom),
-            left: parseInt(window.getComputedStyle(document.body).paddingLeft),
-            right: parseInt(window.getComputedStyle(document.body).paddingRight),
-        };
-        
-        document.body.style.paddingTop = `${safeAreaInsets.top}px`;
-        document.body.style.paddingBottom = `${safeAreaInsets.bottom}px`;
-        document.body.style.paddingLeft = `${safeAreaInsets.left}px`;
-        document.body.style.paddingRight = `${safeAreaInsets.right}px`;
-    };
-
     </script>
 </body>
 </html>
